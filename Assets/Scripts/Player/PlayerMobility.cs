@@ -56,4 +56,19 @@ public class PlayerMobility : MonoBehaviour {
         rigibdy.AddForce(gameObject.transform.up * speed * input);
         
     }
+    //void OnTriggerEnter(Collider c)
+    //{
+    //    if (c.gameObject.tag == "Objects")
+    //        Debug.Log("object collected");
+    //    else
+    //        Debug.Log("Something else collected");
+    //}
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
+        if (other.gameObject.CompareTag("Objects"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }

@@ -403,8 +403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 12857465}
-  tileVivante: {fileID: 11400000, guid: 94e3192b36b0c24478350e02d9959efe, type: 2}
-  tileMorte: {fileID: 11400000, guid: 577ca562cd5790a4b9cf7b0ad1cdd38a, type: 2}
+  tileVivante: {fileID: 11400000, guid: 9b4303ec2226ba64f993cf11d047b2ab, type: 2}
+  tileMorte: {fileID: 11400000, guid: 5fb3429e8a972ac44b1ed2fed25ca5b4, type: 2}
   WaterPercent: 1.93
   SmoothingIterations: 35
   K: 9.37
@@ -756,11 +756,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4973581111764320, guid: 60c9dd587227cec46b9381f8d2f7e163, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0029501915
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4973581111764320, guid: 60c9dd587227cec46b9381f8d2f7e163, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.53406644
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4973581111764320, guid: 60c9dd587227cec46b9381f8d2f7e163, type: 3}
       propertyPath: m_LocalPosition.z

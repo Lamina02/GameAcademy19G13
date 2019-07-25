@@ -17,6 +17,7 @@ public class CollectObject : MonoBehaviour
     //}
     //private GameObject parentObject;
     public GameObject explosion;
+    private GameObject parentObject;
     public void Collect()
     {
 
@@ -27,29 +28,28 @@ public class CollectObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //parentObject = transform.parent.gameObject;
-
-        //if (collision.tag == "Units" && parentObject.tag == "Player")
-        //{
-        //    //Instantiate(explosion, collision.transform.position, Quaternion.identity);
-        //    ////parentObject.GetComponent()
-        //    //Debug.Log(collision.tag + " destroyed by " + parentObject.tag);
-        //    //collision.gameObject.GetComponentInChildren<EnnemyScripts>().TakeDamage();
-
-
-        //    //Destroy(collision.gameObject);
-        //}
-        if (collision.gameObject.tag == "Player") /// ObjectForCollect&& transform.parent.gameObject.tag == "Units"ATTACK VERS UN PLAYER
+        
+        if (collision.tag == "Player")
         {
-            Instantiate(explosion, collision.transform.position, Quaternion.identity);
+            //Instantiate(explosion, collision.transform.position, Quaternion.identity);
+            //parentObject.GetComponent()
+            Debug.Log("Collect");
+            //collision.gameObject.GetComponentInChildren<CollectObject>().Collect();
+            Collect();
 
-            //GameObject.Find("Player").GetComponentInChildren<PlayerMobility>().skillXP++;
-            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
-            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(3);
-
-            Debug.Log(collision.tag + " à collecter un object");
-            Destroy(gameObject);
+            //Destroy(collision.gameObject);
         }
+        //if (collision.tag == "Player") /// ObjectForCollect&& transform.parent.gameObject.tag == "Units"ATTACK VERS UN PLAYER
+        //{
+        //    Instantiate(explosion, collision.transform.position, Quaternion.identity);
+
+        //    //GameObject.Find("Player").GetComponentInChildren<PlayerMobility>().skillXP++;
+        //    GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
+        //    GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(3);
+
+        //    Debug.Log(collision.tag + " à collecter un object");
+        //    Destroy(gameObject);
+        //}
 
     }
 }

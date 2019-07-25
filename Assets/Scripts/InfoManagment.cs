@@ -10,6 +10,11 @@ public class InfoManagment : MonoBehaviour
     private int SkillValue = 0;
     public Text Healt;
     private int HealtValue = 100;
+    void Start()
+    {
+        SkillXP.text = SkillValue.ToString();
+        Healt.text = HealtValue.ToString();
+    }
     public void UpdateSkill(int value)
     {
         SkillValue += value;
