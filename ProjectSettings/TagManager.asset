@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LandScape
+  - Units
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - LandScape
   - 
   - 
   - 
@@ -38,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: LandScape
+    uniqueID: 3452429663
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: OnTop
+    uniqueID: 2283697955
     locked: 0

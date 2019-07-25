@@ -5,31 +5,28 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public Transform lookAt;
-    public Transform camTransform;
+    public GameObject followTarget;
 
-    private Camera cam;
+    public float dampTime = 0.15f;
+    private Vector3 velocity = Vector3.zero;
+    private float cameraZ = 0;
 
-    private float distance = 10.0f;
-    private float currentX = 0.0f;
-    private float currentY = 0.0f;
-    private float sensivityX = 4.0f;
-    private float sensivityY = 1.0f;
+    private Camera camera;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        camTransform = transform;
-        cam = Camera.main;
+        cameraZ = transform.position.z;
+        camera = GetComponent<Camera>();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-       // Vector3 dir = new Vector3(0,0,-distance);
-        //Quaternion rotation; //= Quaternion.Euler(currentY, currentX, 0);
-        //camTransform.position = lookAt.position + rotation * dir;
-        camTransform.LookAt(lookAt.position);
+        if (followTarget)
+        {
+            Vector3 delta = followTarget.transform.position - camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, cameraZ));
+            Vector3 destination = transform.position + delta;
+            destination.z = cameraZ;
+            transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
+        }
     }
 }
