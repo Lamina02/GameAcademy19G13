@@ -29,10 +29,15 @@ public class PlayerMobility : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
     //Update is called once per frame
-    void Update () {
+    void Update ()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             anim.SetTrigger("Attack");
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Test souris click droite");
         }
     }
     void FixedUpdate()

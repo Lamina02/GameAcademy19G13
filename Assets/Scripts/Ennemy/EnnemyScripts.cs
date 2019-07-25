@@ -28,6 +28,8 @@ public class EnnemyScripts : MonoBehaviour {
             GameObject.Destroy(gameObject);
             //Instantiate(prefab, transform.position, transform.rotation, GameObject.Find("WorldMap").transform);
             Instantiate(prefab, transform.position, transform.rotation);//, GameObject.Find("WorldMap").transform
+            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
+            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(3);
         }
        
     }

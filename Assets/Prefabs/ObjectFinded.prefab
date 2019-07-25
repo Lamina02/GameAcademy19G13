@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4524311660756570274}
   m_Layer: 0
   m_Name: ObjectFinded
-  m_TagString: ObjectForCollect
+  m_TagString: Objects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2637421763663459102}
   m_BodyType: 2
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
