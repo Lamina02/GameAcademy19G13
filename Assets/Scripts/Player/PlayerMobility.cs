@@ -5,12 +5,26 @@ using UnityEngine;
 public class PlayerMobility : MonoBehaviour {
 
     //// Use this for initialization
-  
 
-   
+
+
 
     public float speed;
-    Animator anim; 
+    public float healt;
+    public float skillXP;
+
+    Animator anim;
+
+    public void TakeDamage(int amount = 30)
+    {
+        healt -= amount;
+        if (healt <= 0)
+        {
+            //GameObject.Destroy(gameObject);
+            //Instantiate(prefab, transform.position, transform.rotation, GameObject.Find("WorldMap").transform);
+        }
+
+    }
     void Start () {
         anim = GetComponent<Animator>();
     }
