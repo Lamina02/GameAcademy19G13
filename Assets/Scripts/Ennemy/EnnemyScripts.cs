@@ -13,9 +13,25 @@ public class EnnemyScripts : MonoBehaviour {
     //void Update () {
 
     //}
-    public float speed;
+    public float speed = 4;
+    public float healt = 100;
     private Transform player;
     Animator anim;
+
+    public GameObject prefab;
+
+    public void TakeDamage(int amount = 30)
+    {
+        healt -= amount;
+        if (healt <= 0)
+        {
+            GameObject.Destroy(gameObject);
+            //Instantiate(prefab, transform.position, transform.rotation, GameObject.Find("WorldMap").transform);
+            Instantiate(prefab, transform.position, transform.rotation);//, GameObject.Find("WorldMap").transform
+        }
+       
+    }
+
     // Use this for initialization
     void Start()
     {

@@ -22,12 +22,19 @@ public class Wapon : MonoBehaviour {
         if (collision.tag == "Units" && parentObject.tag == "Player")
         {
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
+            //parentObject.GetComponent()
             Debug.Log(collision.tag + " destroyed by " + parentObject.tag);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponentInChildren<EnnemyScripts>().TakeDamage();
+
+           
+            //Destroy(collision.gameObject);
         }
         if (collision.tag == "Player" ) /// && transform.parent.gameObject.tag == "Units"ATTACK VERS UN PLAYER
         {
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
+
+            GameObject.Find("Player").GetComponentInChildren<PlayerMobility>().TakeDamage(1);
+
             Debug.Log(collision.tag+ " attecked by "+ parentObject.tag);
             //Destroy(collision.gameObject);
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LandScape
   - Units
+  - ObjectForCollect
   layers:
   - Default
   - TransparentFX
