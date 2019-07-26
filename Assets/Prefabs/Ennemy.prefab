@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 50577551598213766}
   - component: {fileID: 4065916142572233318}
   - component: {fileID: 61370656569864494}
+  - component: {fileID: 4191648530977376724}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Units
@@ -137,8 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f91d125159d204dbf5189eeaa1fe2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  healt: 100
+  unit: {fileID: 4191648530977376724}
   prefab: {fileID: 2637421763663459102, guid: 38bcd452e8cdf9d43b1af5c341fd57de, type: 3}
 --- !u!61 &61370656569864494
 BoxCollider2D:
@@ -166,6 +166,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.51, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &4191648530977376724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061748051350134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8109306bde949a442a8995e87ade2359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  healt: 100
+  attack: 1
 --- !u!1 &5232232297813235301
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,4 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22de0dccd95bd8c41b4935f090d76712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObject: {fileID: 1061748051350134}
   explosion: {fileID: 1892026823293074, guid: f2825b0f9c72f3c4bb80d95f720b9a6c, type: 3}
+  boardmanager: {fileID: 0}

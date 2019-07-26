@@ -13,8 +13,7 @@ public class EnnemyScripts : MonoBehaviour {
     //void Update () {
 
     //}
-    public float speed = 4;
-    public float healt = 100;
+    public Unit unit;
     private Transform player;
     Animator anim;
 
@@ -22,16 +21,22 @@ public class EnnemyScripts : MonoBehaviour {
 
     public void TakeDamage(int amount = 30)
     {
-        healt -= amount;
-        if (healt <= 0)
+        unit.healt -= amount;
+        if (unit.healt <= 0)
         {
             GameObject.Destroy(gameObject);
             //Instantiate(prefab, transform.position, transform.rotation, GameObject.Find("WorldMap").transform);
             Instantiate(prefab, transform.position, transform.rotation);//, GameObject.Find("WorldMap").transform
-            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
-            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(3);
+            //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill();
+            //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt();
         }
-       
+
+    }
+    public void Attack()
+    {
+
+        anim.SetTrigger("Attack");
+
     }
 
     // Use this for initialization
@@ -42,9 +47,9 @@ public class EnnemyScripts : MonoBehaviour {
     }
     void Update()
     {
-        if (Vector3.Distance(player.position, transform.position)< 3)//player.transform.position <= 
+        if (Vector3.Distance(player.position, transform.position) < 3)//player.transform.position <= 
         {
-            anim.SetTrigger("Attack");
+            Attack();
         }
     }
     void FixedUpdate()
@@ -53,7 +58,7 @@ public class EnnemyScripts : MonoBehaviour {
         transform.eulerAngles = new Vector3(0, 0, z);
         //rigidbody2D.angularVelocity = 0;
         Rigidbody2D rigibdy = gameObject.GetComponent("Rigidbody2D") as Rigidbody2D;
-        rigibdy.AddForce(gameObject.transform.up * speed);
+        rigibdy.AddForce(gameObject.transform.up * unit.speed);
     }
 
 }

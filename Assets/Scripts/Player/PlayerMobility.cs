@@ -6,12 +6,11 @@ public class PlayerMobility : MonoBehaviour {
 
     //// Use this for initialization
 
-
-
-
     public float speed;
     public float healt;
     public float skillXP;
+
+    public GameObject bulletPrefab;
 
     Animator anim;
 
@@ -33,11 +32,17 @@ public class PlayerMobility : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
-            anim.SetTrigger("Attack");
+            anim.SetTrigger("LeftAttack");
         }
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Test souris click droite");
+            
+            //anim.SetTrigger("AttackProjectil");
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = transform.up * 5.0f;
+            Destroy(bullet, 1);
+
+            //Debug.Log("Test souris click droite");
         }
     }
     void FixedUpdate()
@@ -68,7 +73,7 @@ public class PlayerMobility : MonoBehaviour {
         //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
         if (other.gameObject.CompareTag("Objects"))
         {
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
     }
 }

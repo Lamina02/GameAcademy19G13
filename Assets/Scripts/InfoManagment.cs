@@ -5,24 +5,22 @@ using UnityEngine.UI;
 
 public class InfoManagment : MonoBehaviour
 {
-
+    public BoardManager BoardManager;
     public Text SkillXP;
-    private int SkillValue = 0;
     public Text Healt;
-    private int HealtValue = 100;
     void Start()
     {
-        SkillXP.text = SkillValue.ToString();
-        Healt.text = HealtValue.ToString();
+        SkillXP.text = BoardManager.SkillValue.ToString();
+        Healt.text = BoardManager.HealtValue.ToString();
     }
-    public void UpdateSkill(int value)
+    public void UpdateSkill()
     {
-        SkillValue += value;
-        SkillXP.text = SkillValue.ToString();
+        SkillXP.text = BoardManager.SkillValue.ToString();
+        Healt.text = BoardManager.HealtValue.ToString();
     }
-    public void UpdateHealt(int value)
+    public void UpdateHealt()
     {
-        HealtValue += value;
-        Healt.text = HealtValue.ToString();
+        SkillXP.text = BoardManager.SkillValue.ToString();
+        Healt.text = BoardManager.HealtValue.ToString();
     }
 }

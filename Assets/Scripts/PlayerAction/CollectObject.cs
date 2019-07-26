@@ -22,8 +22,8 @@ public class CollectObject : MonoBehaviour
     {
 
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-        GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
-        GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(3);
+        //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill();
+        //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt();
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)

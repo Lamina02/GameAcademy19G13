@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class Wapon : MonoBehaviour {
 
-    //   // Use this for initialization
-    //   void Start () {
-
-    //}
-
     //// Update is called once per frame
     //void Update () {
 
     //   }
-    private GameObject parentObject;
+    public GameObject parentObject;
     public GameObject explosion;
+    public BoardManager boardmanager;
+
+    //   // Use this for initialization
+    void Start()
+    {
+        boardmanager = GameObject.Find("PannelView").GetComponentInParent<BoardManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        parentObject = transform.parent.gameObject;
+        parentObject = transform.parent.gameObject.transform.parent.gameObject;
 
         if (collision.tag == "Units" && parentObject.tag == "Player")
         {
@@ -32,11 +35,11 @@ public class Wapon : MonoBehaviour {
         if (collision.tag == "Player" ) /// && transform.parent.gameObject.tag == "Units"ATTACK VERS UN PLAYER
         {
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
+            boardmanager.HealtValue += 2;
+            //GameObject.Find("Player").GetComponentInChildren<PlayerMobility>().TakeDamage(1);
 
-            GameObject.Find("Player").GetComponentInChildren<PlayerMobility>().TakeDamage(1);
-
-            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
-            GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(-1);
+            //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
+            //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(-1);
             Debug.Log(collision.tag+ " attecked by "+ parentObject.tag);
             //Destroy(collision.gameObject);
         }
