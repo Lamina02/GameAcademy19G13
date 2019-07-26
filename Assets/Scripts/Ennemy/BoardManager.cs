@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class BoardManager : MonoBehaviour
 {
@@ -10,20 +11,40 @@ public class BoardManager : MonoBehaviour
     public float spawnTime = 120f;            // How long between each spawn.    
     public int SkillValue = 0;
     public int HealtValue = 100;
+    public int EnergyValue = 100;
+    public int Level = 1;
+    public float SpeedMultiplicator = 10;
+    public string ShortScoreValue = "";
     void Start() 
     {
+        SpawnEnnemy();
+    }
+    void SpawnEnnemy()
+    {
         InvokeRepeating("Spawn", spawnTime, spawnTime);
+    }
+    void Update()
+    {
+        if (HealtValue < 0)
+        {
+            Level -= 1;
 
+        }
+        if(Level < 1)
+        {
+
+            SceneManager.LoadScene(2);
+        }
     }
     public void PlayerHealtAttack(int value = 0)
     {
         HealtValue += value;
-        UIInformation.UpdateHealt();
+        //UIInformation.UpdateHealt();
     }
     public void PlayerSkillUpdate(int value = 0)
     {
         SkillValue += value;
-        UIInformation.UpdateSkill();
+        //UIInformation.UpdateSkill();
     }
     //public PlayerHealth playerHealth;       // Reference to the player's heatlh.
     //public GameObject enemy;                // The enemy prefab to be spawned.

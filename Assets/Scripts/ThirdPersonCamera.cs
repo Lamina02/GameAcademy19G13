@@ -11,19 +11,19 @@ public class ThirdPersonCamera : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private float cameraZ = 0;
 
-    private Camera camera;
+    public Camera newcamera;
 
     void Start()
     {
         cameraZ = transform.position.z;
-        camera = GetComponent<Camera>();
+        newcamera = GetComponent<Camera>();
     }
 
     void FixedUpdate()
     {
         if (followTarget)
         {
-            Vector3 delta = followTarget.transform.position - camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, cameraZ));
+            Vector3 delta = followTarget.transform.position - newcamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, cameraZ));
             Vector3 destination = transform.position + delta;
             destination.z = cameraZ;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);

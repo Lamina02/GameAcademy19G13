@@ -8,6 +8,7 @@ public class Wapon : MonoBehaviour {
     //void Update () {
 
     //   }
+    public Unit unit;
     public GameObject parentObject;
     public GameObject explosion;
     public BoardManager boardmanager;
@@ -15,33 +16,26 @@ public class Wapon : MonoBehaviour {
     //   // Use this for initialization
     void Start()
     {
-        boardmanager = GameObject.Find("PannelView").GetComponentInParent<BoardManager>();
+        boardmanager = GameObject.Find("GameManager").GetComponentInParent<BoardManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        parentObject = transform.parent.gameObject.transform.parent.gameObject;
 
         if (collision.tag == "Units" && parentObject.tag == "Player")
         {
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
-            //parentObject.GetComponent()
+
             Debug.Log(collision.tag + " destroyed by " + parentObject.tag);
             collision.gameObject.GetComponentInChildren<EnnemyScripts>().TakeDamage();
-
-
-            //Destroy(collision.gameObject);
+            
         }
-        if (collision.tag == "Player" ) /// && transform.parent.gameObject.tag == "Units"ATTACK VERS UN PLAYER
+        if (collision.tag == "Player" ) // Units"ATTACK VERS UN PLAYER
         {
             Instantiate(explosion, collision.transform.position, Quaternion.identity);
-            boardmanager.HealtValue += 2;
-            //GameObject.Find("Player").GetComponentInChildren<PlayerMobility>().TakeDamage(1);
+            boardmanager.HealtValue -= (int)parentObject.GetComponentInChildren<Unit>().attack;
 
-            //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateSkill(2);
-            //GameObject.Find("PannelView").GetComponentInChildren<InfoManagment>().UpdateHealt(-1);
             Debug.Log(collision.tag+ " attecked by "+ parentObject.tag);
-            //Destroy(collision.gameObject);
         }
 
     }

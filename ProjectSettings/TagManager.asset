@@ -8,6 +8,8 @@ TagManager:
   - Units
   - Objects
   - ObjectForCollect
+  - ScoreDisplay
+  - UI
   layers:
   - Default
   - TransparentFX

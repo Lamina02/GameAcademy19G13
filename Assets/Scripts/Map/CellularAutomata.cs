@@ -9,9 +9,9 @@ public class CellularAutomata : MonoBehaviour
     [SerializeField] private Tilemap tilemap;
     [SerializeField] Tile tileVivante;
     [SerializeField] Tile tileMorte;
-    [SerializeField] float WaterPercent;
-    [SerializeField] int SmoothingIterations;
-    [SerializeField] double K;
+    [SerializeField] float WaterPercent=3;
+    [SerializeField] int SmoothingIterations = 3;
+    [SerializeField] double K = 3;
 
     const int sizeMap = 100;
 
@@ -81,9 +81,9 @@ public class CellularAutomata : MonoBehaviour
         }
    
     }
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
       
-    }
+    //}
 }

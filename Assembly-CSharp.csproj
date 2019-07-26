@@ -53,17 +53,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BulletScripts.cs" />
-     <Compile Include="Assets\MainMenu.cs" />
+     <Compile Include="Assets\AnimatorPlayerManager.cs" />
+     <Compile Include="Assets\AssetGlobal\Billboard.cs" />
+     <Compile Include="Assets\DisplayText.cs" />
+     <Compile Include="Assets\ScoreHitPoint.cs" />
+     <Compile Include="Assets\Scripts\BulletScripts.cs" />
      <Compile Include="Assets\Scripts\Ennemy\BoardManager.cs" />
      <Compile Include="Assets\Scripts\Ennemy\EnnemyScripts.cs" />
-     <Compile Include="Assets\Scripts\InfoManagment.cs" />
+     <Compile Include="Assets\Scripts\Information\InfoManagment.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Map\CellularAutomata.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMobility.cs" />
      <Compile Include="Assets\Scripts\PlayerAction\CollectObject.cs" />
      <Compile Include="Assets\Scripts\PlayerAction\ExplosionScripts.cs" />
      <Compile Include="Assets\Scripts\PlayerAction\Wapon.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
+     <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -97,7 +102,9 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-     <Compile Include="Assets\Unit.cs" />
+     <Compile Include="Assets\UIScoreScript.cs" />
+     <Compile Include="Assets\WeaponLook.cs" />
+     <Compile Include="Assets\WeaponRight.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

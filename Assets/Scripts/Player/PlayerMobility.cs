@@ -6,27 +6,47 @@ public class PlayerMobility : MonoBehaviour {
 
     //// Use this for initialization
 
-    public float speed;
-    public float healt;
-    public float skillXP;
-
+    public BoardManager boardmanager;
     public GameObject bulletPrefab;
+    public float defaultSpeed = 10;
+    public GameObject WeaponRight;
 
-    Animator anim;
-
-    public void TakeDamage(int amount = 30)
+    enum LastDirection
     {
-        healt -= amount;
-        if (healt <= 0)
-        {
-            //GameObject.Destroy(gameObject);
-            //Instantiate(prefab, transform.position, transform.rotation, GameObject.Find("WorldMap").transform);
-        }
+        LEFT,
+        RIGHT,
+        FRONT,
+        BACK
+    }
 
+    LastDirection stateDirection = LastDirection.BACK;
+
+    [SerializeField] Animator anim;
+
+    //public void TakeDamage(int amount = 30)
+    //{
+    //    healt -= amount;
+    //    if (healt <= 0)
+    //    {
+    //        //GameObject.Destroy(gameObject);
+    //        //Instantiate(prefab, transform.position, transform.rotation, GameObject.Find("WorldMap").transform);
+    //    }
+
+    //}
+    void Start ()
+    {
+        boardmanager = GameObject.Find("GameManager").GetComponent<BoardManager>();
+        //boardmanager = GameObject.Find("PannelView").GetComponentInChildren<BoardManager>();  
     }
-    void Start () {
-        anim = GetComponent<Animator>();
-    }
+    //int score = 0;
+    //            TextMesh score3DText;
+
+    //            void OnTriggerEnter(other : Collider ) {
+
+    //                if (other.tag == "50P") { score += 50; scoreText = "Score: " + score; Destroy(other.gameObject); score3DText.text = "Score: " + score.ToString(); }
+    //    else if (other.tag == "Enemy") { score += 100; scoreText = "Score: " + score; Destroy(other.gameObject); score3DText.text = "Score: " + score.ToString(); }
+
+    //            }
     //Update is called once per frame
     void Update ()
     {
@@ -36,30 +56,78 @@ public class PlayerMobility : MonoBehaviour {
         }
         if (Input.GetMouseButtonDown(1))
         {
-            
-            //anim.SetTrigger("AttackProjectil");
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            bullet.GetComponent<Rigidbody2D>().velocity = transform.up * 5.0f;
+            if (boardmanager.EnergyValue > 0)
+            {
+                //Back
+                if (Input.GetAxis("Vertical") > 0.0f)
+                {
+                    anim.Play("AttackAnimationBack");
+                }
+                //Front
+                if (Input.GetAxis("Vertical") < 0.0f)
+                {
+                    anim.Play("AttackAnimationFront");
+                }
+                //Right
+                if (Input.GetAxis("Horizontal") > 0.0f)
+                {
+                    anim.Play("AttackAnimationFront");
+                }
+                //Left
+                if (Input.GetAxis("Horizontal") < 0.0f)
+                {
+                    anim.Play("AttackAnimationFront");
+                }
+
+                //anim.SetTrigger("AttackProjectil");
+                boardmanager.EnergyValue -= 1;
+            GameObject bullet = Instantiate(bulletPrefab, WeaponRight.transform.position, WeaponRight.transform.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = WeaponRight.transform.up * 5.0f;
+
             Destroy(bullet, 1);
 
-            //Debug.Log("Test souris click droite");
+             
+                //Debug.Log("Test souris click droite");
+
+            }
         }
     }
+
+
     void FixedUpdate()
     {
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition,
-                                                 Vector3.forward);
-        transform.rotation = rot;
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
-        //rigidbody2D.angularVelocity = 0;
+       
         Rigidbody2D rigibdy = gameObject.GetComponent("Rigidbody2D") as Rigidbody2D;
 
         rigibdy.angularVelocity = 0;
-        float input = Input.GetAxis("Vertical");
 
-        rigibdy.AddForce(gameObject.transform.up * speed * input);
-        
+        float inputVertical = Input.GetAxis("Vertical");
+        float inputHorizontal= Input.GetAxis("Horizontal");
+
+        //Back
+        if (inputVertical > 0.0f)
+        {
+            stateDirection = LastDirection.BACK;
+        }
+        //Front
+        if (inputVertical < 0.0f)
+        {
+            stateDirection = LastDirection.FRONT;
+        }
+        //Right
+        if (inputHorizontal > 0.0f)
+        {
+            stateDirection = LastDirection.RIGHT;
+        }
+        //Left
+        if (inputHorizontal < 0.0f)
+        {
+            stateDirection = LastDirection.LEFT;
+        }
+
+        rigibdy.AddForce(gameObject.transform.up * defaultSpeed * inputVertical);
+        rigibdy.AddForce(gameObject.transform.right * defaultSpeed * inputHorizontal);
+
     }
     //void OnTriggerEnter(Collider c)
     //{
